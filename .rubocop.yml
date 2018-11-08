@@ -1,0 +1,51 @@
+require: rubocop-rspec
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+  Include:
+    - '**/Gemfile'
+    - '**/*.rb'
+  TargetRubyVersion: 2.5.1
+
+# Allow not nested modules
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# Enable 100 chars in line
+Metrics/LineLength:
+  Max: 100
+
+# Don't require documentation comments. We aim for self docummenting code. Add comments where needed.
+Style/Documentation:
+  Enabled: false
+
+# Exclude rspec blocks
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context']
+
+# RSpec config
+
+# Allow multiple expectations in one example.
+# Use it wisely. Only if they consider the same test case and will make test faster.
+MultipleExpectations:
+  Enabled: false
+
+# Doublequotes strings
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+# Allow longer examples (because of multiple expectations)
+Rspec/ExampleLength:
+  Max: 20
+
+RSpec/MessageSpies:
+  Enabled: true
+  EnforcedStyle: receive
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
