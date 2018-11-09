@@ -15,14 +15,18 @@ gem "dry-monads", require: false
 group :development, :test do
   gem "byebug"
   gem "rails-env-credentials"
+  gem "pry-rails"
 end
 
 group :development do
+  # spring & guard
   gem "guard-rspec", require: false
-  gem "letter_opener"
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+
+  # codestyle
+  gem "rubocop", require: false
 end
 
 group :test do
