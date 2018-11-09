@@ -12,6 +12,11 @@ gem "bootsnap", require: false
 
 gem "dry-monads", require: false
 
+# authentication & authorization
+gem "devise"
+# gem "doorkeeper"
+# gem "doorkeeper-grants_assertion"
+
 group :development, :test do
   gem "byebug"
   gem "rails-env-credentials"
