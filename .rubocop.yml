@@ -6,7 +6,7 @@ AllCops:
   Include:
     - '**/Gemfile'
     - '**/*.rb'
-  TargetRubyVersion: 2.5.1
+  TargetRubyVersion: 2.5.3
 
 # Allow not nested modules
 Style/ClassAndModuleChildren:
