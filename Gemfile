@@ -14,6 +14,7 @@ gem "dry-monads", require: false
 
 group :development, :test do
   gem "byebug"
+  gem "rails-env-credentials"
 end
 
 group :development do
