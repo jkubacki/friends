@@ -10,6 +10,8 @@ gem "pg"
 gem "puma"
 gem "bootsnap", require: false
 
+gem "dry-monads", require: false
+
 group :development, :test do
   gem "byebug"
 end
