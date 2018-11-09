@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'dry/monads/result'
-require 'dry/monads/do/all'
+require "dry/monads/result"
+require "dry/monads/do/all"
 
 class ApplicationService
   extend StaticFacade
