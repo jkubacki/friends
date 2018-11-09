@@ -6,16 +6,17 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.5.3"
 
 gem "rails", "~> 5.2.1"
+
+gem "bootsnap", require: false
 gem "pg"
 gem "puma"
-gem "bootsnap", require: false
 
 gem "dry-monads", require: false
 
 group :development, :test do
   gem "byebug"
-  gem "rails-env-credentials"
   gem "pry-rails"
+  gem "rails-env-credentials"
 end
 
 group :development do
@@ -27,6 +28,7 @@ group :development do
 
   # codestyle
   gem "rubocop", require: false
+  gem "rubocop-rspec", require: false
 end
 
 group :test do
