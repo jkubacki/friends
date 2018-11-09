@@ -23,11 +23,11 @@ module Oauth
       end
 
       def provide_social_media_profile(user)
-        # SocialMediaProfile.find_or_create_by!(
-        #   user_id: user.id,
-        #   provider: "google",
-        #   uid: payload["uid"]
-        # )
+        SocialMediaProfile.find_or_create_by!(
+          user_id: user.id,
+          provider: "google",
+          uid: payload["uid"]
+        )
       end
 
       def user_emails
