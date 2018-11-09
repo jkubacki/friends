@@ -20,7 +20,7 @@ Doorkeeper.configure do
     provider = params[:provider]
     return if provider != "google"
 
-    handler = OAuth::Google::Authenticate.new(params[:assertion])
+    handler = Oauth::Google::Authenticate.new(params[:assertion])
     handler.get_user!
   end
 
@@ -128,7 +128,7 @@ Doorkeeper.configure do
   # Check out https://github.com/doorkeeper-gem/doorkeeper/wiki/Changing-how-clients-are-authenticated
   # for more information on customization
   #
-  client_credentials OAuth::CredentialsParser, :from_basic, :from_params
+  client_credentials Oauth::CredentialsParser, :from_basic, :from_params
 
   # Change the way access token is authenticated from the request object.
   # By default it retrieves first from the `HTTP_AUTHORIZATION` header, then
