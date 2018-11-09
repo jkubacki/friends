@@ -20,11 +20,20 @@ gem "doorkeeper-grants_assertion"
 group :development, :test do
   gem "byebug"
   gem "rails-env-credentials"
+  gem "pry-rails"
 end
 
 group :development do
-  gem "letter_opener"
+  # spring & guard
+  gem "guard-rspec", require: false
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+
+  # codestyle
+  gem "rubocop", require: false
+end
+
+group :test do
+  gem "rspec-rails"
 end
