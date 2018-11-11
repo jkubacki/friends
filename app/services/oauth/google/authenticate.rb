@@ -19,19 +19,19 @@ module Oauth
       attr_reader :payload
 
       def create_missing_user
-        # OAuthServices::Create::CreateUserViaGoogle.call(payload: payload).value!
+        Oauth::Google::CreateUser.call(payload: payload).value!
       end
 
       def provide_social_media_profile(user)
         SocialMediaProfile.find_or_create_by!(
           user_id: user.id,
           provider: "google",
-          uid: payload["uid"]
+          uid: payload[:uid]
         )
       end
 
       def user_emails
-        payload["emails"].map { |em| em[:value] }
+        payload[:emails].map { |em| em[:value] }
       end
     end
   end
