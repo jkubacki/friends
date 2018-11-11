@@ -17,10 +17,19 @@ gem "dry-monads", require: false
 gem "devise"
 gem "doorkeeper"
 gem "doorkeeper-grants_assertion"
+gem "pundit"
 
+# grape
+gem "grape"
+gem "grape_logging"
 
 gem "rack-attack"
 gem "rack-cors"
+
+# jsonapi
+gem "grape-jsonapi-resources"
+gem "jsonapi-resources"
+
 group :development, :test do
   gem "byebug"
   gem "pry-rails"
