@@ -18,6 +18,9 @@ gem "devise"
 gem "doorkeeper"
 gem "doorkeeper-grants_assertion"
 
+
+gem "rack-attack"
+gem "rack-cors"
 group :development, :test do
   gem "byebug"
   gem "pry-rails"
