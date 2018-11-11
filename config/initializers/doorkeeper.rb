@@ -11,7 +11,6 @@ Doorkeeper.configure do
     user = User.find_for_database_authentication(email: params[:username])
     if user.present? && user.confirmed? &&
        user.valid_for_authentication? { user.valid_password?(params[:password]) }
-      user.update_tracked_fields!(request)
       user
     end
   end
