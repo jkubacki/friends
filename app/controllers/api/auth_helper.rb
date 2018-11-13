@@ -19,7 +19,6 @@ module API
     # Check if user is authenticated by doorkeeper token
     # @return [Boolean]
     def authenticated?
-      puts "doorkeeper_token: #{doorkeeper_token}"
       doorkeeper_token.present? ? doorkeeper_authorize!.nil? : false
     end
 
