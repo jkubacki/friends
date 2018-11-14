@@ -41,13 +41,13 @@ module API
         # It requires errors messages and details formatted in ActiveRecord way
         # as `ActiveModel::Errors`.
         # All errors objects have the same http status.
-        # More information in {RequestServices::SerializeErrors} documentation.
+        # More information in {Requests::SerializeErrors} documentation.
         # @return [void]
         def return_errors_array!(status, messages, details)
-          result = RequestServices::SerializeErrors.call(
+          result = Requests::SerializeErrors.call(
             messages: messages, details: details, status: status
           )
-          error!(result.data, status)
+          error!(result.value!, status)
         end
 
         # Helper for easy fetching JSON API relationships id from params.
@@ -71,45 +71,6 @@ module API
           options
         end
 
-        # Helper for returning associated records of resource.
-        # Firstly it finds a resource, then checks if it should return the records and at the end
-        # it either returns them of renders with pagination and number of records in meta
-        # @return [ActiveRecord_AssociationRelation]
-        def resource_associated_records(resource, association, render = true)
-          @resource = find_resource(resource, params[:id])
-          authorize @resource, "show_#{association}?".to_sym
-          resources_to_return = resource_with_included_associations(
-            @resource.public_send(association)
-          )
-          return resources_to_return unless render
-
-          render(
-            paginate(resources_to_return),
-            render_options(meta: { total_count: resources_to_return.size })
-          )
-        end
-
-        # Helper for avoiding n+1 queries problem that may be used when `include` parameter
-        # is present or just when rendering results.
-        # It includes some default associations or those that we include.
-        def resource_with_included_associations(resource)
-          associations = RequestServices::IncludeAssociations.call(
-            params: params
-          ).data[:associations]
-          resource.includes(associations)
-        end
-
-        # Helper for standard resource update. Firstly it checks if provided ids differ,
-        # then authorize action, updates resource and finally returns 204 no body status.
-        # @return [void]
-        def update_resource(resource)
-          check_id_uniformity
-          resource.assign_attributes(json_api_attributes)
-          authorize resource, :update?
-          resource.save!
-          body false
-        end
-
         private
 
         def build_error_hash(error_hash, status)
@@ -119,14 +80,6 @@ module API
             code: error_hash[:code].presence || error_hash[:message].parameterize.underscore,
             status: status
           }
-        end
-
-        def find_resource(resource, id)
-          if %w[Opportunity User].include?(resource.name)
-            resource.find_by!(uuid: id)
-          else
-            resource.find(id)
-          end
         end
       end
     end
