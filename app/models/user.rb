@@ -7,4 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_many :social_media_profiles
+
+  def send_confirmation_notification?
+    false # don't send a default confirmation email
+  end
 end
