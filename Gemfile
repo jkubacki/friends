@@ -26,12 +26,15 @@ gem "grape_logging"
 gem "rack-attack"
 gem "rack-cors"
 
+gem "oj"
+
 # jsonapi
 gem "grape-jsonapi-resources"
 gem "jsonapi-resources"
 
 group :development, :test do
   gem "byebug"
+  gem "factory_bot_rails"
   gem "pry-rails"
   gem "rails-env-credentials"
 end
@@ -49,5 +52,6 @@ group :development do
 end
 
 group :test do
+  gem "faker"
   gem "rspec-rails"
 end

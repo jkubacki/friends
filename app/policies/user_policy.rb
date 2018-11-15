@@ -4,4 +4,8 @@ class UserPolicy < ApplicationPolicy
   def me?
     current_user == record
   end
+
+  def create?
+    true
+  end
 end

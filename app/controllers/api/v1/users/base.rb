@@ -11,6 +11,10 @@ module API
             mount Users::Me::Show
           end
         end
+
+        resource :users do
+          mount Create
+        end
       end
     end
   end
