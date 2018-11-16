@@ -24,6 +24,6 @@ Stack:
 
 Setup:
 
-`yarn install`
+`bundle install`
 
-`yarn start`
+`rake db:setup`
