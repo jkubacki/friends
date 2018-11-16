@@ -5,6 +5,12 @@ require "rails_helper"
 RSpec.describe UserPolicy do
   subject { described_class }
 
+  permissions :create? do
+    it "permits not logged in users" do
+      expect(subject).to permit(nil, described_class, :create?)
+    end
+  end
+
   permissions :me? do
     let(:record) { build_stubbed(:user) }
 
