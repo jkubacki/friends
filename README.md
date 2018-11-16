@@ -1,24 +1,29 @@
-# README
+[In development]
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails JSON API backend for Friends app
 
-Things you may want to cover:
+React frontend https://github.com/jkubacki/friends-front
 
-* Ruby version
 
-* System dependencies
+Automatic scheduling for groups of friends busy with their lives.
 
-* Configuration
 
-* Database creation
+It checks availability in google calendar and pings friends with a proposition (twilio sms or push notification).
 
-* Database initialization
+We are going to use it for scheduling RPG sessions.
 
-* How to run the test suite
+Stack:
+* Ruby on Rails
+* [JSON API](https://jsonapi.org/)
+* grape / devise / doorkeeper / pundit
+* RSpec
+* Twilio (sms) # TBA
+* Google calendar api # TBA
+* Sidekiq # TBA
+* AWS / Docker infrastructure # TBA
 
-* Services (job queues, cache servers, search engines, etc.)
+Setup:
 
-* Deployment instructions
+`yarn install`
 
-* ...
+`yarn start`
