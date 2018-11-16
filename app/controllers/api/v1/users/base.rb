@@ -13,6 +13,7 @@ module API
         end
 
         resource :users do
+          mount Confirmations::Base
           mount Create
         end
       end
