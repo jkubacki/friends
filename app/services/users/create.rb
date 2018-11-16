@@ -9,6 +9,13 @@ module Users
     end
 
     def call
+      create_user_record
+        .bind(&method(:send_confirmation_email))
+    end
+
+    private
+
+    def create_user_record
       user = User.new(
         email: email,
         password: password,
@@ -17,7 +24,10 @@ module Users
       user.save ? Success(user) : Failure(user)
     end
 
-    private
+    def send_confirmation_email(user)
+      Users::ConfirmationMailer.send_confirmation(user.id).deliver_later
+      Success(user)
+    end
 
     attr_reader :email, :password, :password_confirmation
   end
