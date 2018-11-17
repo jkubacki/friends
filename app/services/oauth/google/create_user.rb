@@ -8,23 +8,20 @@ module Oauth
       end
 
       def call
-        yield user = create_missing_user
-        success(data: { user: user })
+        user = User.create!(
+          email: main_email,
+          password: SecureRandom.hex(20),
+          confirmed_at: Time.current
+        )
+        Success(user)
       end
 
       private
 
       attr_reader :payload
 
-      def create_missing_user
-        User.create!(
-          email: main_email,
-          # first_name: payload[:name][:givenName],
-          # last_name: payload[:name][:familyName],
-          # languages: user_languages,
-          password: SecureRandom.hex(20),
-          confirmed_at: Time.current
-        )
+      def main_email
+        payload[:emails].first[:value]
       end
     end
   end
