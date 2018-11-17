@@ -62,6 +62,7 @@ GEM
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
+    database_cleaner (1.7.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (4.5.0)
@@ -292,6 +293,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   byebug
+  database_cleaner
   devise
   doorkeeper
   doorkeeper-grants_assertion
