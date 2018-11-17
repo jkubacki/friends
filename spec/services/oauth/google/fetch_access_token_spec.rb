@@ -6,7 +6,7 @@ RSpec.describe Oauth::Google::FetchAccessToken do
   subject { described_class.call(access_code: "access_code") }
 
   context "when fetch request fails" do
-    before { VCR.insert_cassette("services/oauth/google/fetch_access_token/failed") }
+    before { VCR.insert_cassette("services/oauth/google/fetch_access_token/failure") }
 
     after { VCR.eject_cassette }
 
@@ -19,7 +19,7 @@ RSpec.describe Oauth::Google::FetchAccessToken do
   end
 
   context "when fetch request succeds" do
-    before { VCR.insert_cassette("services/oauth/google/fetch_access_token/succees") }
+    before { VCR.insert_cassette("services/oauth/google/fetch_access_token/success") }
 
     after { VCR.eject_cassette }
 
