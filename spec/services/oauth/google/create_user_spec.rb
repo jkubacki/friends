@@ -5,9 +5,9 @@ require "rails_helper"
 RSpec.describe Oauth::Google::CreateUser do
   include ActiveSupport::Testing::TimeHelpers
 
-  subject { described_class.call(payload: payload) }
+  subject { described_class.call(user_data: user_data) }
 
-  let(:payload) do
+  let(:user_data) do
     {
       emails: [{ value: "user@example.com" }, { value: "user2@example.com" }]
     }

@@ -3,8 +3,8 @@
 module Oauth
   module Google
     class CreateUser < ApplicationService
-      def initialize(payload:)
-        @payload = payload
+      def initialize(user_data:)
+        @user_data = user_data
       end
 
       def call
@@ -18,10 +18,10 @@ module Oauth
 
       private
 
-      attr_reader :payload
+      attr_reader :user_data
 
       def main_email
-        payload[:emails].first[:value]
+        user_data[:emails].first[:value]
       end
     end
   end
