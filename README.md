@@ -15,7 +15,7 @@ We are going to use it for scheduling RPG sessions.
 Tech:
 * Ruby on Rails
 * [JSON API](https://jsonapi.org/)
-* OAuth2
+* OAuth2 & Google login
 * grape / devise / doorkeeper / pundit
 * RSpec
 * Twilio (sms) # TBA
