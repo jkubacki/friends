@@ -12,9 +12,10 @@ It checks availability in google calendar and pings friends with a proposition (
 
 We are going to use it for scheduling RPG sessions.
 
-Stack:
+Tech:
 * Ruby on Rails
 * [JSON API](https://jsonapi.org/)
+* OAuth2
 * grape / devise / doorkeeper / pundit
 * RSpec
 * Twilio (sms) # TBA
