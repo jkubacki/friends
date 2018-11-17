@@ -54,6 +54,7 @@ end
 group :test do
   gem "database_cleaner"
   gem "faker"
+  gem "jsonapi-resources-matchers", require: false
   gem "rspec-rails"
   gem "vcr"
   gem "webmock"
