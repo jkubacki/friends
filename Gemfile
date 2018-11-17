@@ -34,7 +34,6 @@ gem "jsonapi-resources"
 
 group :development, :test do
   gem "byebug"
-  gem "factory_bot_rails"
   gem "pry-rails"
   gem "rails-env-credentials"
 end
@@ -53,6 +52,7 @@ end
 
 group :test do
   gem "database_cleaner"
+  gem "factory_bot_rails"
   gem "faker"
   gem "jsonapi-resources-matchers", require: false
   gem "rspec-rails"
