@@ -3,7 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Oauth::Google::Authenticate do
-  include ActiveSupport::Testing::TimeHelpers
   include Dry::Monads::Result::Mixin
 
   subject { described_class.call(access_code: "access_code") }
