@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/plus/v1/people/me?access_token=access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.googleapis.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Sat, 17 Nov 2018 11:12:24 GMT
+      Date:
+      - Sat, 17 Nov 2018 11:12:24 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"jb1Xzanox6i8Zyse4DcYD8sZqy0/7NknsQcp2oWiaXHW_4ewCV_UYrc"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="44,43,39,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+         "kind": "plus#person",
+         "etag": "etag",
+         "gender": "male",
+         "emails": [
+          {
+           "value": "user@example.com",
+           "type": "account"
+          }
+         ],
+         "objectType": "person",
+         "id": "1",
+         "displayName": "John Doe",
+         "name": {
+          "familyName": "Doe",
+          "givenName": "John"
+         },
+         "url": "https://plus.google.com/1",
+         "image": {
+          "url": "https://lh5.googleusercontent.com/url/photo.jpg?sz=50",
+          "isDefault": false
+         },
+         "isPlusUser": true,
+         "language": "pl",
+         "circledByCount": 1,
+         "verified": false
+        }
+    http_version:
+  recorded_at: Sat, 17 Nov 2018 11:12:24 GMT
+recorded_with: VCR 4.0.0
