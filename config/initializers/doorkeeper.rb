@@ -21,8 +21,7 @@ Doorkeeper.configure do
     provider = params[:provider]
     return if provider != "google"
 
-    handler = Oauth::Google::Authenticate.new(params[:assertion])
-    handler.get_user!
+    Oauth::Google::Authenticate.call(access_code: params[:assertion]).value!
   end
 
   # If you didn't skip applications controller from Doorkeeper routes in your application routes.rb
