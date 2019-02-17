@@ -47,6 +47,9 @@ group :development do
   # codestyle
   gem "rubocop", require: false
   gem "rubocop-rspec", require: false
+
+  # mailing
+  gem "letter_opener"
 end
 
 group :test do
