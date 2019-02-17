@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_17_232239) do
+ActiveRecord::Schema.define(version: 2019_02_17_232706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,16 @@ ActiveRecord::Schema.define(version: 2019_02_17_232239) do
     t.index ["group_id"], name: "index_propositions_on_group_id"
   end
 
+  create_table "responses", force: :cascade do |t|
+    t.bigint "proposition_id", null: false
+    t.bigint "user_id", null: false
+    t.boolean "confirmed", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["proposition_id"], name: "index_responses_on_proposition_id"
+    t.index ["user_id"], name: "index_responses_on_user_id"
+  end
+
   create_table "social_media_profiles", force: :cascade do |t|
     t.string "provider", null: false
     t.string "uid", null: false
@@ -130,5 +140,7 @@ ActiveRecord::Schema.define(version: 2019_02_17_232239) do
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
   add_foreign_key "propositions", "groups"
+  add_foreign_key "responses", "propositions"
+  add_foreign_key "responses", "users"
   add_foreign_key "social_media_profiles", "users"
 end
