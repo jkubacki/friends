@@ -36,6 +36,7 @@ group :development, :test do
   gem "byebug"
   gem "pry-rails"
   gem "rails-env-credentials"
+  gem "rspec-rails"
 end
 
 group :development do
@@ -55,7 +56,6 @@ group :test do
   gem "factory_bot_rails"
   gem "faker"
   gem "jsonapi-resources-matchers", require: false
-  gem "rspec-rails"
   gem "vcr"
   gem "webmock"
 end
