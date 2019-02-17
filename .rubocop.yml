@@ -37,7 +37,7 @@ Style/StringLiterals:
   EnforcedStyle: double_quotes
 
 # Allow longer examples (because of multiple expectations)
-Rspec/ExampleLength:
+RSpec/ExampleLength:
   Max: 20
 
 RSpec/MessageSpies:
