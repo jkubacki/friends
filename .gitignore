@@ -29,3 +29,6 @@ app/services/tst.rb
 
 # Ignore master key for decrypting credentials and more.
 /config/master-test.key
+
+# Test coverage
+/coverage

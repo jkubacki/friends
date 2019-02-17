@@ -55,6 +55,7 @@ group :test do
   gem "faker"
   gem "jsonapi-resources-matchers", require: false
   gem "shoulda-matchers"
+  gem "simplecov", require: false
   gem "vcr"
   gem "webmock"
 end
