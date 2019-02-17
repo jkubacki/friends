@@ -56,6 +56,7 @@ group :test do
   gem "factory_bot_rails"
   gem "faker"
   gem "jsonapi-resources-matchers", require: false
+  gem "shoulda-matchers"
   gem "vcr"
   gem "webmock"
 end
