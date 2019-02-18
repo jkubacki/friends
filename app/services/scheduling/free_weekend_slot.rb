@@ -8,7 +8,7 @@ module Scheduling
 
     def call
       weekend_days.each do |day|
-        result = Scheduling::FreeDaySlot.call(group: group, day: day, awake_hours: awake_hours)
+        result = Scheduling::FreeDaySlots.call(group: group, day: day, awake_hours: awake_hours)
         return result if result.failure? || result.value!.present?
       end
       Success([])

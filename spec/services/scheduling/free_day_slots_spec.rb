@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Scheduling::FreeDaySlot do
+RSpec.describe Scheduling::FreeDaySlots do
   include Dry::Monads::Result::Mixin
 
   subject { described_class.call(group: group, day: day, awake_hours: awake_hours) }
