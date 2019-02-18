@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Scheduling
-  class SubtractTimeRange < ApplicationService
+module TimeRanges
+  class Subtract < ApplicationService
     def initialize(range:, subtract:)
       @range = range
       @subtract = subtract

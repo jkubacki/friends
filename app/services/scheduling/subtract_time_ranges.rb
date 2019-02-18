@@ -12,7 +12,7 @@ module Scheduling
 
       subtract_time_ranges.each do |subtract|
         available_timeranges = available_timeranges.inject([]) do |timeranges, timerange|
-          timeranges + Scheduling::SubtractTimeRange.call(range: timerange, subtract: subtract)
+          timeranges + TimeRanges::Subtract.call(range: timerange, subtract: subtract)
         end
       end
 

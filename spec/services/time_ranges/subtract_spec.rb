@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Scheduling::SubtractTimeRange do
+RSpec.describe TimeRanges::Subtract do
   subject { described_class.call(range: range, subtract: subtract) }
 
   let(:range) { time_range(8, 11) }
