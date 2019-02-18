@@ -10,9 +10,7 @@ module GoogleCalendar
     def call
       busy_time_ranges = []
       group.members.each do |user|
-        result =
-          GoogleCalendar::BusyTimeRangesForUser
-          .call(user: user, time_range: time_range)
+        result = GoogleCalendar::BusyTimeRangesForUser.call(user: user, time_range: time_range)
         return result if result.failure?
 
         busy_time_ranges += result.value!
