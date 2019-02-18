@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :event do
-    group { nil }
-    proposition { nil }
+    group
+    proposition
     date { DateTime.current }
   end
 end
