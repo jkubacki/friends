@@ -2,10 +2,9 @@
 
 module GoogleCalendar
   class BusyTimeRangesForGroup < ApplicationService
-    def initialize(group:, utc_from:, utc_to:)
+    def initialize(group:, time_range:)
       @group = group
-      @utc_from = utc_from
-      @utc_to = utc_to
+      @time_range = time_range
     end
 
     def call
@@ -13,7 +12,7 @@ module GoogleCalendar
       group.members.each do |user|
         result =
           GoogleCalendar::BusyTimeRangesForUser
-          .call(user: user, utc_from: utc_from, utc_to: utc_to)
+          .call(user: user, time_range: time_range)
         return result if result.failure?
 
         busy_time_ranges += result.value!
@@ -23,6 +22,6 @@ module GoogleCalendar
 
     private
 
-    attr_reader :group, :utc_from, :utc_to
+    attr_reader :group, :time_range
   end
 end

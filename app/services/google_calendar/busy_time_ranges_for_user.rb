@@ -2,19 +2,18 @@
 
 module GoogleCalendar
   class BusyTimeRangesForUser < ApplicationService
-    def initialize(user:, utc_from:, utc_to:)
+    def initialize(user:, time_range:)
       @user = user
-      @utc_from = utc_from
-      @utc_to = utc_to
+      @time_range = time_range
     end
 
     def call
       # TODO, implement calendar integration
-      []
+      Success([])
     end
 
     private
 
-    attr_accessor :user, :utc_from, :utc_to
+    attr_accessor :user, :time_range
   end
 end

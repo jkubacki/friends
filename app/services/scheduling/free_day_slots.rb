@@ -27,7 +27,7 @@ module Scheduling
       return busy_time_ranges if busy_time_ranges.failure?
 
       time_ranges = Scheduling::SubtractTimeRanges.call(
-        timerange: awake_time_range,
+        range: awake_time_range,
         subtract_time_ranges: busy_time_ranges.value!
       )
       Success(time_ranges)
@@ -42,7 +42,8 @@ module Scheduling
     end
 
     def busy_time_ranges
-      @busy_time_ranges ||= GoogleCalendar::BusyTimeRangesForGroup.call(group: group)
+      @busy_time_ranges ||=
+        GoogleCalendar::BusyTimeRangesForGroup.call(group: group, time_range: awake_time_range)
     end
   end
 end
