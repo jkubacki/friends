@@ -44,6 +44,22 @@ RSpec.describe Scheduling::SubtractTimeRange do
     end
   end
 
+  context "when subtract is included inside time range and adjacent to the first edge" do
+    let(:subtract) { time_range(8, 10) }
+
+    it "returns trimmed time range" do
+      expect(subject).to eq [time_range(10, 11)]
+    end
+  end
+
+  context "when subtract is included inside time range and adjacent to the last edge" do
+    let(:subtract) { time_range(10, 11) }
+
+    it "returns trimmed time range" do
+      expect(subject).to eq [time_range(8, 10)]
+    end
+  end
+
   context "when time range is included in subtract" do
     let(:subtract) { time_range(7, 11) }
 

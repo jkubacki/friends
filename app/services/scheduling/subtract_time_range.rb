@@ -11,21 +11,21 @@ module Scheduling
       return [range] unless range.overlaps?(subtract)
       return [] if subtract.include?(range)
 
-      if range.include?(subtract)
-        split_time_range
-      else
-        trim_time_range
-      end
+      should_split? ? split_time_range : trim_time_range
     end
 
     private
+
+    def should_split?
+      range.first < subtract.first && range.last > subtract.last
+    end
 
     def split_time_range
       [range.first..subtract.first, subtract.last..range.last]
     end
 
     def trim_time_range
-      if range.first > subtract.first
+      if range.first >= subtract.first
         [subtract.last..range.last]
       else
         [range.first..subtract.first]
