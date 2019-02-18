@@ -7,4 +7,6 @@ class Proposition < ApplicationRecord
 
   validates :group, :date, :status, presence: true
   validates :status, inclusion: { in: STATUSES }
+
+  scope :pending, -> { where(status: "pending") }
 end
