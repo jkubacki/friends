@@ -60,7 +60,7 @@ module Helpers
 
     def relation_id(relation)
       relation = relation[:record] if relation.is_a?(Hash)
-      relation.try(:uuid).presence || relation.id
+      relation.try(:id).presence || relation.id
     end
 
     def relation_name(relation)

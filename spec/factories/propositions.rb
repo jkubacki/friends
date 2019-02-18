@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :proposition do
-    group { nil }
+    group
     date { DateTime.current }
     status { "pending" }
   end
