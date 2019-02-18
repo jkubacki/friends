@@ -5,8 +5,6 @@ class Group < ApplicationRecord
   has_many :memberships
   has_many :members, through: :memberships, source: :user
 
-  validates(
-    :meeting_length_in_minutes, :creator_required, :min_users_in_meeting, :creator,
-    presence: true
-  )
+  validates :meeting_length_in_minutes, :min_users_in_meeting, :creator, presence: true
+  validates :creator_required, inclusion: [true, false]
 end
