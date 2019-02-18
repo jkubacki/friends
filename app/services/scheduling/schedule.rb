@@ -9,7 +9,7 @@ module Scheduling
     def call
       return Success(nil) if event_for_this_week? || pending_proposition?
 
-      yield slots_result = free_weekend_slots
+      yield slots_result = available_weekend_slots
       slots = slots_result.value!
       return Success(nil) if slots.empty?
 
@@ -29,8 +29,8 @@ module Scheduling
       Proposition.pending(group).any?
     end
 
-    def free_weekend_slots
-      Scheduling::FreeWeekendSlots.call(group: group)
+    def available_weekend_slots
+      Scheduling::AvailableWeekendSlots.call(group: group)
     end
 
     def pick_random_date(slots)

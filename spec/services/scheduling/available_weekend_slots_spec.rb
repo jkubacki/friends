@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Scheduling::FreeWeekendSlots do
+RSpec.describe Scheduling::AvailableWeekendSlots do
   include Dry::Monads::Result::Mixin
 
   subject { described_class.call(group: group) }

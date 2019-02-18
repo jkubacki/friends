@@ -26,7 +26,7 @@ RSpec.describe Scheduling::Schedule do
     allow(Proposition).to receive(:pending).with(group).and_return(propositions_scope)
     allow(propositions_scope).to receive(:any?).and_return(pending_proposition)
 
-    allow(Scheduling::FreeWeekendSlots).to receive(:call).and_return(weekend_slots_result)
+    allow(Scheduling::AvailableWeekendSlots).to receive(:call).and_return(weekend_slots_result)
     allow(slots).to receive(:sample).and_return(radom_slot)
 
     allow(Propositions::Create).to receive(:call).and_return(Success(nil))

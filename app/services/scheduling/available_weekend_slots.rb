@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Scheduling
-  class FreeWeekendSlots < ApplicationService
+  class AvailableWeekendSlots < ApplicationService
     def initialize(group:)
       @group = group
     end
