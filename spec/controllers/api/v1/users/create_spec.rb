@@ -23,20 +23,33 @@ describe API::V1::Users::Create, type: :request do
       password_confirmation: "password"
     }
   end
-  let(:result) { Success(user) }
   let(:user) { build_stubbed(:user) }
 
   before { allow(Users::Create).to receive(:call).and_return(result) }
 
-  it "creates user" do
-    expect(Users::Create).to receive(:call).with(attributes).once
-    subject
+  context "when user is created successfully" do
+    let(:result) { Success(user) }
+
+    it "creates user" do
+      expect(Users::Create).to receive(:call).with(attributes).once
+      subject
+    end
+
+    it "renders user" do
+      subject
+      response_body = Oj.load(response.body)
+      expect(response_body["data"]["type"]).to eq "users"
+      expect(response_body["data"]["id"]).to eq user.id.to_s
+    end
   end
 
-  it "renders user" do
-    subject
-    response_body = Oj.load(response.body)
-    expect(response_body["data"]["type"]).to eq "users"
-    expect(response_body["data"]["id"]).to eq user.id.to_s
+  context "when user creation fails" do
+    let(:invalid_user) { build_stubbed(:user) }
+    let(:result) { Failure(invalid_user) }
+
+    it "returns 422" do
+      subject
+      expect(response.status).to eq 422
+    end
   end
 end
