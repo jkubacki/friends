@@ -18,7 +18,7 @@ RSpec.describe Scheduling::FreeDaySlots do
 
   before do
     allow(GoogleCalendar::BusyTimeRangesForGroup).to receive(:call).and_return(google_result)
-    allow(Scheduling::SubtractTimeRanges).to receive(:call).and_return(available_time_ranges)
+    allow(TimeRanges::SubtractMany).to receive(:call).and_return(available_time_ranges)
     allow(TimeRanges::LongEnough).to receive(:call).and_return(long_enough)
   end
 
@@ -34,8 +34,8 @@ RSpec.describe Scheduling::FreeDaySlots do
     let(:google_result) { Success(busy_time_ranges) }
     let(:busy_time_ranges) { [time_range(10, 12, day), time_range(15, 18, day)]}
 
-    it "calls SubtractTimeRanges with calendar busy time and awake hours time range" do
-      expect(Scheduling::SubtractTimeRanges).to(
+    it "calls SubtractMany with calendar busy time and awake hours time range" do
+      expect(TimeRanges::SubtractMany).to(
         receive(:call)
         .with(range: time_range(10, 18, day), subtract_time_ranges: busy_time_ranges)
       ).once

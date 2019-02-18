@@ -26,7 +26,7 @@ module Scheduling
     def available_time_ranges
       return busy_time_ranges if busy_time_ranges.failure?
 
-      time_ranges = Scheduling::SubtractTimeRanges.call(
+      time_ranges = TimeRanges::SubtractMany.call(
         range: awake_time_range,
         subtract_time_ranges: busy_time_ranges.value!
       )
