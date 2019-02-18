@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :social_media_profiles
 
+  validates :utc, presence: true
+
   def send_confirmation_notification?
     false # don't send a default confirmation email
   end
