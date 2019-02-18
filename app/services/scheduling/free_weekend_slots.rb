@@ -7,14 +7,19 @@ module Scheduling
     end
 
     def call
-      weekend_days.each do |day|
-        result = Scheduling::FreeDaySlots.call(group: group, day: day, awake_hours: awake_hours)
-        return result if result.failure? || result.value!.present?
-      end
-      Success([])
+      weekend_slots =
+        weekend_days.inject([]) do |free_slots, day|
+          yield result = free_day_slots(day)
+          free_slots + result.value!
+        end
+      Success(weekend_slots)
     end
 
     private
+
+    def free_day_slots(day)
+      Scheduling::FreeDaySlots.call(group: group, day: day, awake_hours: awake_hours)
+    end
 
     attr_reader :group
 

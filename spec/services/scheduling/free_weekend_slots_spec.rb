@@ -10,7 +10,7 @@ RSpec.describe Scheduling::FreeWeekendSlots do
   let(:group) { build_stubbed(:group) }
   let(:saturday) { Date.today }
   let(:sunday) { Date.tomorrow }
-  let(:free_day_slots_result) { Success(nil) }
+  let(:free_day_slots_result) { Success([]) }
   let(:awake_hours) { double }
 
   before do
@@ -45,8 +45,8 @@ RSpec.describe Scheduling::FreeWeekendSlots do
   context "when Scheduling::FreeDaySlots returns time ranges" do
     let(:free_day_slots_result) { Success([time_range(10, 12)]) }
 
-    it "returns first successfull non-empty result" do
-      expect(subject).to eq free_day_slots_result
+    it "returns values from all results" do
+      expect(subject.value!).to eq [time_range(10, 12), time_range(10, 12)]
     end
   end
 end
