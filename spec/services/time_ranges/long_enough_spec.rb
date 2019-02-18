@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Scheduling::TimeRangeLongEnough do
+RSpec.describe TimeRanges::LongEnough do
   subject { described_class.call(group: group, time_range: range) }
 
   let(:group) { build_stubbed(:group, meeting_length_in_minutes: meeting_length_in_minutes) }

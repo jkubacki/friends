@@ -14,7 +14,7 @@ module Scheduling
 
       long_enough_time_ranges =
         available_time_ranges_result.value!.select do |time_range|
-          Scheduling::TimeRangeLongEnough.call(group: group, time_range: time_range)
+          TimeRanges::LongEnough.call(group: group, time_range: time_range)
         end
       Success(long_enough_time_ranges)
     end

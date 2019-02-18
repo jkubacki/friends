@@ -19,7 +19,7 @@ RSpec.describe Scheduling::FreeDaySlots do
   before do
     allow(GoogleCalendar::BusyTimeRangesForGroup).to receive(:call).and_return(google_result)
     allow(Scheduling::SubtractTimeRanges).to receive(:call).and_return(available_time_ranges)
-    allow(Scheduling::TimeRangeLongEnough).to receive(:call).and_return(long_enough)
+    allow(TimeRanges::LongEnough).to receive(:call).and_return(long_enough)
   end
 
   context "when GoogleCalendar::BusyTimeRangesForGroup fails" do
@@ -42,8 +42,8 @@ RSpec.describe Scheduling::FreeDaySlots do
       subject
     end
 
-    it "calls Scheduling::TimeRangeLongEnough for each available time ranges" do
-      expect(Scheduling::TimeRangeLongEnough).to(
+    it "calls TimeRanges::LongEnough for each available time ranges" do
+      expect(TimeRanges::LongEnough).to(
         receive(:call).with(group: group, time_range: available_time_range)
       ).once
       subject

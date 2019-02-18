@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Scheduling
-  class TimeRangeLongEnough < ApplicationService
+module TimeRanges
+  class LongEnough < ApplicationService
     def initialize(group:, time_range:)
       @group = group
       @time_range = time_range
