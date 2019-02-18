@@ -37,7 +37,7 @@ RSpec.describe Scheduling::FreeDaySlots do
     it "calls SubtractTimeRanges with calendar busy time and awake hours time range" do
       expect(Scheduling::SubtractTimeRanges).to(
         receive(:call)
-        .with(timerange: time_range(10, 18, day), subtract_time_ranges: busy_time_ranges)
+        .with(range: time_range(10, 18, day), subtract_time_ranges: busy_time_ranges)
       ).once
       subject
     end
