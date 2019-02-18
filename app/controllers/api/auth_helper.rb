@@ -28,14 +28,6 @@ module API
       return_error!(401, message: "Unauthorized")
     end
 
-    # Current requester
-    # @return [{User}, String]
-    def current_requester
-      return APPLICATION if doorkeeper_token&.resource_owner_id.nil?
-
-      current_user
-    end
-
     # Current user
     # @return [{User}, nil]
     def current_user
@@ -47,11 +39,7 @@ module API
     # User from doorkeeper token or new user
     # @return [{User}]
     def doorkeeper_user
-      if doorkeeper_token.resource_owner_id
-        User.find(doorkeeper_token.resource_owner_id)
-      else
-        User.user.new
-      end
+      doorkeeper_token.resource_owner_id ? User.find(doorkeeper_token.resource_owner_id) : User.new
     end
   end
 end

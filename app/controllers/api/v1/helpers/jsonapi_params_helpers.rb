@@ -37,18 +37,6 @@ module API
           end
         end
 
-        # Helper allowing to provide optional param which change in what language
-        # resource will be returned
-        # ```
-        # params do
-        #   use :locale
-        # end
-        params :locale do |_options|
-          optional :locale,
-                   desc: "Locale that the resource should be displayed for",
-                   values: I18nData.languages.keys.map(&:downcase)
-        end
-
         # Helper params used to structure POST and PATCH params according to
         # JSON API convention. Example usage in Grape controller:
         # ```
