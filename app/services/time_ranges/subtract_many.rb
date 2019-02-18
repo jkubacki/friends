@@ -8,18 +8,18 @@ module TimeRanges
     end
 
     def call
-      available_timeranges = [range]
-
-      subtract_time_ranges.each do |subtract|
-        available_timeranges = available_timeranges.inject([]) do |timeranges, timerange|
-          timeranges + TimeRanges::Subtract.call(range: timerange, subtract: subtract)
-        end
+      subtract_time_ranges.inject([range]) do |time_ranges, subtract|
+        subtract_from(time_ranges, subtract)
       end
-
-      available_timeranges
     end
 
     private
+
+    def subtract_from(from_time_ranges, subtract)
+      from_time_ranges.inject([]) do |time_ranges, timerange|
+        time_ranges + TimeRanges::Subtract.call(range: timerange, subtract: subtract)
+      end
+    end
 
     attr_reader :range, :subtract_time_ranges
   end
