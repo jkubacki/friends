@@ -9,7 +9,7 @@ module Scheduling
     def call
       weekend_slots =
         weekend_days.inject([]) do |free_slots, day|
-          yield result = free_day_slots(day)
+          yield result = available_day_slots(day)
           free_slots + result.value!
         end
       Success(weekend_slots)
@@ -17,8 +17,8 @@ module Scheduling
 
     private
 
-    def free_day_slots(day)
-      Scheduling::FreeDaySlots.call(group: group, day: day, awake_hours: awake_hours)
+    def available_day_slots(day)
+      Scheduling::AvailableDaySlots.call(group: group, day: day, awake_hours: awake_hours)
     end
 
     attr_reader :group

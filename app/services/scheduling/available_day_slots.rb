@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Scheduling
-  class FreeDaySlots < ApplicationService
+  class AvailableDaySlots < ApplicationService
     def initialize(group:, day:, awake_hours:)
       @group = group
       @day = day
