@@ -8,8 +8,8 @@ module Scheduling
     end
 
     def call
-      return range unless range.overlaps?(subtract)
-      return nil if subtract.include?(range)
+      return [range] unless range.overlaps?(subtract)
+      return [] if subtract.include?(range)
 
       if range.include?(subtract)
         split_time_range
@@ -26,9 +26,9 @@ module Scheduling
 
     def trim_time_range
       if range.first > subtract.first
-        subtract.last..range.last
+        [subtract.last..range.last]
       else
-        range.first..subtract.first
+        [range.first..subtract.first]
       end
     end
 

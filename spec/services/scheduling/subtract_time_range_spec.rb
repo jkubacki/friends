@@ -11,7 +11,7 @@ RSpec.describe Scheduling::SubtractTimeRange do
     let(:subtract) { time_range(12, 14) }
 
     it "returns original range" do
-      expect(subject).to eq range
+      expect(subject).to eq [range]
     end
   end
 
@@ -19,7 +19,7 @@ RSpec.describe Scheduling::SubtractTimeRange do
     let(:subtract) { time_range(7, 9) }
 
     it "returns time range with trimmed beggining" do
-      expect(subject).to eq time(9)..range.last
+      expect(subject).to eq [time(9)..range.last]
     end
   end
 
@@ -27,7 +27,7 @@ RSpec.describe Scheduling::SubtractTimeRange do
     let(:subtract) { time_range(10, 15) }
 
     it "returns time range with trimmed end" do
-      expect(subject).to eq range.first..time(10)
+      expect(subject).to eq [range.first..time(10)]
     end
   end
 
@@ -48,7 +48,7 @@ RSpec.describe Scheduling::SubtractTimeRange do
     let(:subtract) { time_range(7, 11) }
 
     it "removes time range from results" do
-      expect(subject).to eq nil
+      expect(subject).to eq []
     end
   end
 end
